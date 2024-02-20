@@ -2,9 +2,16 @@
 
 const express = require("express");
 const { sortLeaderboard, leaderboardPosition } = require("./leaderboardPut.js");
+const { generateTiles } = require("./htmlgenerator.js");
 const { readFileSync } = require("fs");
 
 const app = express();
+
+app.use(express.static("./src"));
+
+app.get("/", (req, res) => {
+    res.send(generateTiles("./leaderboard.json"));
+});
 // get specific item
 app.get("/item/:name", (req, res, next) => {
     // load name
@@ -38,7 +45,7 @@ app.get("/list/:input", (req, res, next) => {
     const input = decodeURIComponent(req.params.input);
     let output = {};
 
-    if (isNaN(input) || input == "all") {
+    if (isNaN(input) && input != "all") {
         res.status(400).send("Invalid Query");
         return next();
     }
@@ -147,4 +154,4 @@ app.get(["/list", "/item", "/place"], (req, res, next) => {
 });
 
 // serve to browser
-app.listen(process.env.PORT || 3000, () => console.log(`app available on http://localhost:3000`));
+app.listen(process.env.PORT || 4000, () => console.log(`app available on http://localhost:4000`));

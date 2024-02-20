@@ -18,6 +18,8 @@
     "@faker-js/faker": "^8.4.1",
     "@types/node": "^20.11.16",
     "nodemon": "^3.0.3",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1"
   }
 }

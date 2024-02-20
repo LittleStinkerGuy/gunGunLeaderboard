@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./src/output.css" rel="stylesheet" />
+        <title>GUI</title>
+    </head>
+
+    <body class="bg-indigo-50">
+        <h1 class="py-20 text-center text-8xl font-semibold tracking-wide text-indigo-950">Leaderboard</h1>
+
+        <main class="grid h-full w-screen grid-cols-1 place-items-center py-5 text-indigo-50">
+            <div id="leaderboardTile" class="m-3 grid w-8/12 grid-cols-3 items-center rounded-lg bg-gradient-to-br from-indigo-700 to-indigo-500 md:grid-cols-4">
+                <h1 class="hidden p-10 text-center text-6xl md:block">Place</h1>
+                <div class="col-span-2 pl-10">
+                    <h2 class="text-5xl">Name</h2>
+                    <p class="text-xl">Date</p>
+                </div>
+                <h3 class="p-10 text-right text-6xl">Score</h3>
+            </div>
+        </main>
+
+        <script type="module" src="./main.js"></script>
+    </body>
+</html>

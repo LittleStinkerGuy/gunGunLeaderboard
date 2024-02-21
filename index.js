@@ -4,7 +4,7 @@ const express = require("express");
 const { sortLeaderboard, leaderboardPosition } = require("./leaderboardPut.js");
 const { generateTiles } = require("./htmlgenerator.js");
 const { readFileSync } = require("fs");
-const cors = require(cors);
+const cors = require("cors");
 
 const app = express();
 

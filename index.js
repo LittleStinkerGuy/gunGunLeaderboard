@@ -4,10 +4,12 @@ const express = require("express");
 const { sortLeaderboard, leaderboardPosition } = require("./leaderboardPut.js");
 const { generateTiles } = require("./htmlgenerator.js");
 const { readFileSync } = require("fs");
+const cors = require(cors);
 
 const app = express();
 
 app.use(express.static("./src"));
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send(generateTiles("./leaderboard.json"));

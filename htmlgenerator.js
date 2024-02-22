@@ -17,7 +17,6 @@ function generateTiles(leaderboardPath) {
             <h3 class="p-10 text-right text-6xl">${leaderboard[leaderboardKeys[i]].score}</h3>
         </div>`;
     }
-    console.log(output);
     return `<!doctype html>
     <html lang="en">
         <head>

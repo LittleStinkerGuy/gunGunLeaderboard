@@ -156,4 +156,4 @@ app.get(["/list", "/item", "/place"], (req, res, next) => {
 });
 
 // serve to browser
-app.listen(process.env.PORT || 4000, () => console.log(`app available on http://localhost:4000`));
+app.listen(port, () => console.log(`app available on http://localhost:${port}`));

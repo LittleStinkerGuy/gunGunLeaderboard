@@ -8,12 +8,13 @@ const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 4000;
+const leaderboardPath = "./var/leaderboard.json";
 
 app.use(express.static("./src"));
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send(generateTiles("./leaderboard.json"));
+    res.send(generateTiles(leaderboardPath));
 });
 // get specific item
 app.get("/item/:name", (req, res, next) => {
@@ -21,7 +22,7 @@ app.get("/item/:name", (req, res, next) => {
     const name = decodeURIComponent(req.params.name);
 
     // parse leaderboard
-    let leaderboard = JSON.parse(readFileSync("./leaderboard.json", { encoding: "utf8", flag: "r" }));
+    let leaderboard = JSON.parse(readFileSync(leaderboardPath, { encoding: "utf8", flag: "r" }));
 
     let nameLowerCase = name.toLowerCase();
     let properlyCapitalizedKey = Object.keys(leaderboard).find((key) => key.toLowerCase() === nameLowerCase);
@@ -54,7 +55,7 @@ app.get("/list/:input", (req, res, next) => {
     }
 
     // parse leaderboard and get list of keys
-    let leaderboard = JSON.parse(readFileSync("./leaderboard.json", { encoding: "utf8", flag: "r" }));
+    let leaderboard = JSON.parse(readFileSync(leaderboardPath, { encoding: "utf8", flag: "r" }));
     let leaderboardKeys = Object.keys(leaderboard);
 
     // sort leaderboard
@@ -105,7 +106,7 @@ app.get("/place/:input", (req, res, next) => {
     }
 
     // parse leaderboard and get list of keys
-    let leaderboard = JSON.parse(readFileSync("./leaderboard.json", { encoding: "utf8", flag: "r" }));
+    let leaderboard = JSON.parse(readFileSync(leaderboardPath, { encoding: "utf8", flag: "r" }));
     let leaderboardKeys = Object.keys(leaderboard);
 
     // sort leaderboard
@@ -122,7 +123,7 @@ app.get("/place/:input", (req, res, next) => {
 });
 
 app.put("/upload", (req, res, next) => {
-    let leaderboard = JSON.parse(readFileSync("./leaderboard.json", { encoding: "utf8", flag: "r" }));
+    let leaderboard = JSON.parse(readFileSync(leaderboardPath, { encoding: "utf8", flag: "r" }));
 
     const originalName = decodeURIComponent(req.query.name);
     const score = decodeURIComponent(req.query.score);
@@ -143,7 +144,7 @@ app.put("/upload", (req, res, next) => {
     }
 
     try {
-        let newPos = new leaderboardPosition(name, score, time, hash, "./leaderboard.json");
+        let newPos = new leaderboardPosition(name, score, time, hash, leaderboardPath);
         res.send(newPos.addToJson());
     } catch (err) {
         res.status(422).send(err);

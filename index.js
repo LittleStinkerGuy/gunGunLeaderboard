@@ -7,6 +7,7 @@ const { readFileSync } = require("fs");
 const cors = require("cors");
 
 const app = express();
+const port = process.env.PORT || 4000;
 
 app.use(express.static("./src"));
 app.use(cors());

@@ -8,7 +8,7 @@ const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 4000;
-const leaderboardPath = "/opt/render/project/src/var/leaderboard.json";
+const leaderboardPath = "/var/leaderboard.json";
 
 app.use(express.static("./src"));
 app.use(cors());
@@ -158,7 +158,7 @@ app.get(["/list", "/item", "/place"], (req, res, next) => {
 });
 
 app.get("/true", (req, res, next) => {
-    res.send("Good Job :)");
+    res.status(200).send("Good Job :)");
     return next();
 });
 

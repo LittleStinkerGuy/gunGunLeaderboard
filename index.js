@@ -157,5 +157,10 @@ app.get(["/list", "/item", "/place"], (req, res, next) => {
     return next();
 });
 
+app.get("/true", (req, res, next) => {
+    res.send("Good Job :)");
+    return next();
+});
+
 // serve to browser
 app.listen(port, () => console.log(`app available on http://localhost:${port}`));

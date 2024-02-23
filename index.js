@@ -8,7 +8,7 @@ const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 4000;
-const leaderboardPath = "./var/leaderboard.json";
+const leaderboardPath = "/opt/render/project/src/var/leaderboard.json";
 
 app.use(express.static("./src"));
 app.use(cors());
